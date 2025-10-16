@@ -1,0 +1,197 @@
+{
+  "version": "1.0",
+  "metadata": {
+    "title": "Connections Credit Union Financial Health Checkup",
+    "description": "Baseline assessment covering spend, save, borrow, and plan behaviors.",
+    "languages": ["en", "es"],
+    "scoring": {
+      "scale": "0-100",
+      "domains": ["Spend", "Save", "Borrow", "Plan"],
+      "weights": {
+        "Spend": 0.25,
+        "Save": 0.25,
+        "Borrow": 0.25,
+        "Plan": 0.25
+      }
+    }
+  },
+  "questions": [
+    {
+      "id": "spend_1",
+      "domain": "Spend",
+      "text": {
+        "en": "How confident are you that you can cover your regular bills on time each month?",
+        "es": "¿Qué tan seguro está de poder pagar sus cuentas regulares a tiempo cada mes?"
+      },
+      "type": "likert",
+      "scale": 5,
+      "anchors": {
+        "1": {
+          "en": "Never",
+          "es": "Nunca"
+        },
+        "5": {
+          "en": "Always",
+          "es": "Siempre"
+        }
+      },
+      "weights": {
+        "1": 0,
+        "2": 0.25,
+        "3": 0.5,
+        "4": 0.75,
+        "5": 1
+      }
+    },
+    {
+      "id": "save_1",
+      "domain": "Save",
+      "text": {
+        "en": "Do you currently have at least $500 set aside for emergencies?",
+        "es": "¿Tiene actualmente al menos $500 reservados para emergencias?"
+      },
+      "type": "multiple_choice",
+      "options": [
+        {
+          "value": "yes",
+          "en": "Yes",
+          "es": "Sí",
+          "score": 1
+        },
+        {
+          "value": "partial",
+          "en": "I have some savings but not $500",
+          "es": "Tengo algunos ahorros pero menos de $500",
+          "score": 0.5
+        },
+        {
+          "value": "no",
+          "en": "No",
+          "es": "No",
+          "score": 0
+        }
+      ]
+    },
+    {
+      "id": "borrow_1",
+      "domain": "Borrow",
+      "text": {
+        "en": "Over the past 12 months, how often have you used payday or auto title loans?",
+        "es": "En los últimos 12 meses, ¿con qué frecuencia ha utilizado préstamos de día de pago o con título de auto?"
+      },
+      "type": "likert",
+      "scale": 5,
+      "anchors": {
+        "1": {
+          "en": "Never",
+          "es": "Nunca"
+        },
+        "5": {
+          "en": "Every month",
+          "es": "Cada mes"
+        }
+      },
+      "weights": {
+        "1": 1,
+        "2": 0.75,
+        "3": 0.5,
+        "4": 0.25,
+        "5": 0
+      }
+    },
+    {
+      "id": "plan_1",
+      "domain": "Plan",
+      "text": {
+        "en": "Which statement best describes your budgeting habits?",
+        "es": "¿Qué afirmación describe mejor sus hábitos de presupuesto?"
+      },
+      "type": "multiple_choice",
+      "options": [
+        {
+          "value": "tracking",
+          "en": "I keep a written or digital budget and review it weekly",
+          "es": "Mantengo un presupuesto escrito o digital y lo reviso semanalmente",
+          "score": 1
+        },
+        {
+          "value": "occasional",
+          "en": "I review my spending occasionally but not on a schedule",
+          "es": "Reviso mis gastos ocasionalmente pero sin un horario",
+          "score": 0.5
+        },
+        {
+          "value": "none",
+          "en": "I do not track my spending",
+          "es": "No llevo un registro de mis gastos",
+          "score": 0
+        }
+      ]
+    },
+    {
+      "id": "stress_1",
+      "domain": "Plan",
+      "text": {
+        "en": "How much stress does your financial situation cause you?",
+        "es": "¿Cuánto estrés le causa su situación financiera?"
+      },
+      "type": "likert",
+      "scale": 5,
+      "anchors": {
+        "1": {
+          "en": "No stress",
+          "es": "Sin estrés"
+        },
+        "5": {
+          "en": "Extreme stress",
+          "es": "Estrés extremo"
+        }
+      },
+      "weights": {
+        "1": 1,
+        "2": 0.75,
+        "3": 0.5,
+        "4": 0.25,
+        "5": 0
+      }
+    }
+  ],
+  "scoring_logic": {
+    "method": "weighted_average",
+    "instructions": "Normalize each response to 0-1 using weights or scores, average by domain, then compute overall index using domain weights."
+  },
+  "next_steps": {
+    "thresholds": [
+      {
+        "min_score": 0,
+        "max_score": 39,
+        "label": "Stabilize",
+        "recommendations": [
+          "Schedule a call with a certified financial counselor",
+          "Enroll in emergency savings challenge",
+          "Review local assistance programs"
+        ]
+      },
+      {
+        "min_score": 40,
+        "max_score": 69,
+        "label": "Build",
+        "recommendations": [
+          "Complete budgeting fundamentals micro-course",
+          "Set automatic savings transfer",
+          "Explore credit-building secured card"
+        ]
+      },
+      {
+        "min_score": 70,
+        "max_score": 100,
+        "label": "Grow",
+        "recommendations": [
+          "Take advanced goal planning workshop",
+          "Review investment and retirement readiness",
+          "Volunteer as a peer financial health ambassador"
+        ]
+      }
+    ]
+  }
+}
