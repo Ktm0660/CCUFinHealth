@@ -1,0 +1,23 @@
+[project]
+name = "ccufinhealth"
+version = "0.1.0"
+description = "CCU Financial Health Platform backend services"
+authors = [{name = "CCU", email = "support@ccu.example"}]
+requires-python = ">=3.10"
+dependencies = [
+    "fastapi>=0.110.0",
+    "uvicorn>=0.29.0",
+    "pydantic[email]>=2.6.0"
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0"
+]
+
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
